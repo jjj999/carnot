@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "carnot"
+version = "0.1.0"
+description = "Module for defining reversible transactions."
+authors = ["jjj999 <jjj999to@gmail.com>"]
+maintainers = ["jjj999 <jjj999to@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://jjj999.github.io/carnot"
+repository = "https://github.com/jjj999/carnot"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typing-extensions = "^4.3.0"
+
+[tool.poetry.dev-dependencies]
+build = "^0.8.0"
+flake8 = "^5.0.4"
+invoke = "^1.7.1"
+mkdocstrings = "^0.19.0"
+mkdocs-material = "^8.3.9"
+pre-commit = "^2.20.0"
+pytest = "^7.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

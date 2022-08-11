@@ -1,0 +1,40 @@
+site_name: carnot
+site_description: Module for defining reversible transactions.
+site_url: https://jjj999.github.io/carnot
+
+docs_dir: docs
+repo_url: https://github.com/jjj999/carnot
+repo_name: jjj999/carnot
+copyright: Copyright &copy; 2022 Yunhyeon Jeong
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+  language: en
+  palette:
+    primary: green
+
+nav:
+  - Home: index.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jjj999/carnot
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python

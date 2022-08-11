@@ -1,0 +1,11 @@
+build/
+dist/
+pages/
+site/
+.env
+*.egg-info/
+*.log
+.playground/
+__pycache__/
+.venv/
+.vscode/

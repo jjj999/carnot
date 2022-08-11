@@ -115,6 +115,17 @@ python-dateutil = ">=2.8.1"
 dev = ["wheel", "flake8", "markdown", "twine"]
 
 [[package]]
+name = "griffe"
+version = "0.22.0"
+description = "Signatures for entire Python programs. Extract the structure, the frame, the skeleton of your project, to generate API documentation or find breaking changes in your API."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+async = ["aiofiles (>=0.7,<1.0)"]
+
+[[package]]
 name = "identify"
 version = "2.5.3"
 description = "File identification library for Python"
@@ -288,6 +299,18 @@ pymdown-extensions = ">=6.3"
 crystal = ["mkdocstrings-crystal (>=0.3.4)"]
 python = ["mkdocstrings-python (>=0.5.2)"]
 python-legacy = ["mkdocstrings-python-legacy (>=0.2.1)"]
+
+[[package]]
+name = "mkdocstrings-python"
+version = "0.7.1"
+description = "A Python handler for mkdocstrings."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+griffe = ">=0.11.1"
+mkdocstrings = ">=0.19"
 
 [[package]]
 name = "nodeenv"
@@ -539,7 +562,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3c2518c81e2f5d5181f11c5c33eeabc9fa78164c3c87f5cb57f81946c46c802b"
+content-hash = "db0fca77205f7fc08b113730df6ef14e39cad8d666915d433524b03408c6c1ba"
 
 [metadata.files]
 atomicwrites = []
@@ -564,6 +587,10 @@ flake8 = [
     {file = "flake8-5.0.4.tar.gz", hash = "sha256:6fbe320aad8d6b95cec8b8e47bc933004678dc63095be98528b7bdd2a9f510db"},
 ]
 ghp-import = []
+griffe = [
+    {file = "griffe-0.22.0-py3-none-any.whl", hash = "sha256:65c94cba634d6ad397c495b04ed5fd3f06d9b16c4f9f78bd63be9ea34d6b7113"},
+    {file = "griffe-0.22.0.tar.gz", hash = "sha256:a3c25a2b7bf729ecee7cd455b4eff548f01c620b8f58a8097a800caad221f12e"},
+]
 identify = [
     {file = "identify-2.5.3-py2.py3-none-any.whl", hash = "sha256:25851c8c1370effb22aaa3c987b30449e9ff0cece408f810ae6ce408fdd20893"},
     {file = "identify-2.5.3.tar.gz", hash = "sha256:887e7b91a1be152b0d46bbf072130235a8117392b9f1828446079a816a05ef44"},
@@ -639,6 +666,10 @@ mkdocs-material-extensions = [
 mkdocstrings = [
     {file = "mkdocstrings-0.19.0-py3-none-any.whl", hash = "sha256:3217d510d385c961f69385a670b2677e68e07b5fea4a504d86bf54c006c87c7d"},
     {file = "mkdocstrings-0.19.0.tar.gz", hash = "sha256:efa34a67bad11229d532d89f6836a8a215937548623b64f3698a1df62e01cc3e"},
+]
+mkdocstrings-python = [
+    {file = "mkdocstrings-python-0.7.1.tar.gz", hash = "sha256:c334b382dca202dfa37071c182418a6df5818356a95d54362a2b24822ca3af71"},
+    {file = "mkdocstrings_python-0.7.1-py3-none-any.whl", hash = "sha256:a22060bfa374697678e9af4e62b020d990dad2711c98f7a9fac5c0345bef93c7"},
 ]
 nodeenv = []
 packaging = [

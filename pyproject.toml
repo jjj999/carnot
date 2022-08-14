@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "carnot"
-version = "0.1.0"
+version = "0.1.1"
 description = "Module for defining reversible transactions."
 authors = ["jjj999 <jjj999to@gmail.com>"]
 maintainers = ["jjj999 <jjj999to@gmail.com>"]

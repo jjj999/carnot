@@ -3,7 +3,10 @@ import functools
 import inspect
 import typing as t
 
-from typing_extensions import ParamSpec
+from typing_extensions import (
+    Concatenate,
+    ParamSpec,
+)
 
 
 _P = ParamSpec("_P")
@@ -11,7 +14,7 @@ _Q = ParamSpec("_Q")
 _R = t.TypeVar("_R")
 
 
-class reversible_function(t.Generic[_P, _R]):
+class reversible_function(t.Generic[_P, _Q, _R]):
 
     def __init__(
         self,
@@ -76,11 +79,9 @@ class reversible_function(t.Generic[_P, _R]):
 
 
 _Object_t = t.TypeVar("_Object_t")
-_Forward_t = t.TypeVar("_Forward_t", bound=t.Callable)
-_Backward_t = t.TypeVar("_Backward_t", bound=t.Callable)
 
 
-class reversible_method(t.Generic[_Object_t, _Forward_t, _Backward_t]):
+class reversible_method(t.Generic[_Object_t, _P, _Q, _R]):
     """Descriptor for reversible methods.
 
     This descriptor can be applied to reversible methods, whose processes are
@@ -94,8 +95,10 @@ class reversible_method(t.Generic[_Object_t, _Forward_t, _Backward_t]):
 
     def __init__(
         self,
-        f_forward: _Forward_t,
-        f_backward: t.Optional[_Backward_t] = None,
+        f_forward: t.Callable[Concatenate[_Object_t, _P], _R],
+        f_backward: t.Optional[
+            t.Callable[Concatenate[_Object_t, _Q], None]
+        ] = None,
     ) -> None:
         """
         Args:
@@ -120,7 +123,7 @@ class reversible_method(t.Generic[_Object_t, _Forward_t, _Backward_t]):
         self,
         instance: _Object_t,
         owner: t.Optional[t.Type[_Object_t]] = None,
-    ) -> _Forward_t:
+    ) -> t.Callable[_P, _R]:
         ...
 
     def __get__(self, instance, owner = None):
@@ -142,7 +145,10 @@ class reversible_method(t.Generic[_Object_t, _Forward_t, _Backward_t]):
 
         return _callback
 
-    def backward(self, f_backward: _Backward_t) -> reversible_method:
+    def backward(
+        self,
+        f_backward: t.Callable[Concatenate[_Object_t, _Q], None],
+    ) -> reversible_method:
         """Registers a function for backward process.
 
         Args:
@@ -162,7 +168,7 @@ class reversible_method(t.Generic[_Object_t, _Forward_t, _Backward_t]):
         """
         self._args = args
 
-    def get_forward(self) -> _Forward_t:
+    def get_forward(self) -> t.Callable[[Concatenate[_Object_t, _P], _R]]:
         """Returns the forward function.
 
         Returns:
@@ -170,7 +176,7 @@ class reversible_method(t.Generic[_Object_t, _Forward_t, _Backward_t]):
         """
         return self._f_forward
 
-    def get_backward(self) -> _Backward_t:
+    def get_backward(self) -> t.Callable[[Concatenate[_Object_t, _Q], None]]:
         """Returns the backward function.
 
         Returns:

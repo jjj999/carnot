@@ -17,7 +17,7 @@ from carnot import reversible_function, transaction
 
 count = 0
 
-@reverse_function
+@reversible_function
 def add(num: int) -> None:
     global count
     count += num
